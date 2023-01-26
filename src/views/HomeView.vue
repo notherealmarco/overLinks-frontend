@@ -27,14 +27,14 @@ export default {
 	mounted() {
 		this.refresh();
 
-		console.log(this.$vuetify)
+		//console.log(this.$vuetify)
 
-		this.$grammy.MainButton.setParams({
-			text: "pulsantone inutile",
-			color: this.$grammy.themeParams.hint_color,
-			is_active: false,
-			is_visible: false,
-		});
+		//this.$grammy.MainButton.setParams({
+		//	text: "pulsantone inutile",
+		//	color: this.$grammy.themeParams.hint_color,
+		//	is_active: false,
+		//	is_visible: false,
+		//});
 	}
 }
 </script>
