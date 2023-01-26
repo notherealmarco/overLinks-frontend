@@ -22,6 +22,15 @@ export default {
 	},
 	mounted() {
 		this.refresh();
+
+		console.log(this.$vuetify)
+
+		this.$grammy.MainButton.setParams({
+			text: "pulsantone inutile",
+			color: this.$grammy.themeParams.hint_color,
+			is_active: false,
+			is_visible: false,
+		});
 	}
 }
 </script>
@@ -46,7 +55,8 @@ export default {
 				<tr v-for="item in some_data" :key="item.id">
 					<td>{{ item.type }}</td>
 					<td>{{ item.description }}</td>
-					<td><a style="text-decoration:none" :href="item.link"><v-icon icon="mdi-open-in-new"></v-icon></a></td>
+					<td><a style="text-decoration:none" :href="item.link"><v-icon icon="mdi-open-in-new"></v-icon></a>
+					</td>
 				</tr>
 			</tbody>
 		</v-table>
