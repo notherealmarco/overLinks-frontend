@@ -14,7 +14,7 @@ export default {
 
 	// Called when the root view is mounted
 	mounted() {
-		this.theme = this.$grammy.colorScheme
+		//this.theme = this.$grammy.colorScheme
 	}
 }
 </script>
