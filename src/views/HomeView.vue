@@ -2,22 +2,26 @@
 export default {
 	data: function () {
 		return {
-			errormsg: null,
-			loading: false,
 			some_data: [],
 		}
 	},
 	methods: {
 		async refresh() {
-			this.loading = true;
-			this.errormsg = null;
 			try {
-				let response = await this.$axios.get("/links");
-				this.some_data = response.data;
+				let response = await this.$axios.get("/links")
+				this.some_data = response.data
 			} catch (e) {
-				this.errormsg = e.toString();
+				alert(e.toString())
 			}
-			this.loading = false;
+		},
+
+		async ldelete(id) {
+			try {
+				let response = await this.$axios.delete("/links/" + id)
+				this.refresh()
+			} catch (e) {
+				alert(e.toString())
+			}
 		},
 	},
 	mounted() {
@@ -41,6 +45,9 @@ export default {
 			<thead>
 				<tr>
 					<th class="text-left">
+						X
+					</th>
+					<th class="text-left">
 						Type
 					</th>
 					<th class="text-left">
@@ -53,9 +60,10 @@ export default {
 			</thead>
 			<tbody>
 				<tr v-for="item in some_data" :key="item.id">
+					<td><v-icon @click="ldelete(item.id)" icon="mdi-delete-outline" style="color: #E53935"></v-icon></td>
 					<td>{{ item.type }}</td>
 					<td>{{ item.description }}</td>
-					<td><a style="text-decoration:none" :href="item.link"><v-icon icon="mdi-open-in-new"></v-icon></a>
+					<td><a style="text-decoration:none" :href="item.link" target="_blank"><v-icon icon="mdi-open-in-new"></v-icon></a>
 					</td>
 				</tr>
 			</tbody>

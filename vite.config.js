@@ -1,14 +1,14 @@
-import {fileURLToPath, URL} from 'node:url'
+import { fileURLToPath, URL } from 'node:url'
 
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
-export default defineConfig(({command, mode, ssrBuild}) => {
+export default defineConfig(({ command, mode, ssrBuild }) => {
 	const ret = {
 		plugins: [
-			vue({ 
+			vue({
 				template: { transformAssetUrls }
 			}),
 			vuetify({ autoImport: true }),
@@ -19,8 +19,14 @@ export default defineConfig(({command, mode, ssrBuild}) => {
 			}
 		},
 	};
-	ret.define = {
-		"__API_URL__": JSON.stringify("http://localhost:3000"),
-	};
+	if (command === 'serve') {
+		ret.define = {
+			"__API_URL__": JSON.stringify("http://localhost:3000"),
+		};
+	} else {
+		ret.define = {
+			"__API_URL__": JSON.stringify("https://overlinks.marcorealacci.me/api"),
+		};
+	}
 	return ret;
 })

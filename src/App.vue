@@ -8,7 +8,7 @@ export default {
 	},
 	methods: {
 		setDarkTheme(dark) {
-			this.theme = dark ? "dark" : "light";
+			this.theme = dark ? "dark" : "light"
 		}
 	},
 
@@ -20,25 +20,14 @@ export default {
 </script>
 
 <template>
-
 	<v-app :theme="theme">
 		<v-container class="fill-height">
 			<v-row align-content="center" justify="center" class="fill-height">
-
-
-
 				<router-view></router-view>
-
-
 			</v-row>
 		</v-container>
 	</v-app>
-
-
-
-
 </template>
 
 <style>
-
 </style>
