@@ -6,7 +6,7 @@ import axios from './services/axios.js';
 import ErrorMsg from './components/ErrorMsg.vue'
 import LoadingSpinner from './components/LoadingSpinner.vue'
 
-//import { WebApp } from "@grammyjs/web-app";
+import { WebApp } from "@grammyjs/web-app";
 
 import './assets/dashboard.css'
 import './assets/main.css'
@@ -17,7 +17,7 @@ import vuetify from './plugins/vuetify'
 const app = createApp(App)
 
 app.config.globalProperties.$axios = axios;
-//app.config.globalProperties.$grammy = WebApp;
+app.config.globalProperties.$grammy = WebApp;
 app.component("ErrorMsg", ErrorMsg);
 app.component("LoadingSpinner", LoadingSpinner);
 
